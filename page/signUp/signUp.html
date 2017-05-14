@@ -1,0 +1,22 @@
+<div id="headerBackground">
+    <div id="header" class="clearfix">
+        <div class="headerLeft headerLogo">be motivated</div>
+        <div class="headerLeft headerAuswahl" ng-click="path('/')">Home</div>
+        
+        <div class="headerRight headerAuswahl " ng-click="path('/login')">Login</div>
+        <div class="headerRight headerAuswahl headerSignUpAuswahl" ng-click="path('/signUp')">Sign Up</div>
+    </div>
+</div>
+
+<div id="signUpInput">
+    <h1>Sign up</h1>
+    <br>
+    <p>Name: </p>
+    <input type="text" class="form-control" ng-model="newUser.name" ng-keypress="submit(newUser,$event)">
+    <p>E-Mail: </p>
+    <input type="email" class="form-control" ng-model="newUser.email" ng-keypress="submit(newUser,$event)">
+    <p>Password:</p>
+    <input type="password" class="form-control" ng-model="newUser.password" ng-keypress="submit(newUser,$event)">
+    <button ng-click="submit(newUser)" >Save</button>
+    <div class="signUpError">{{errorMessage}}</div>
+</div>

@@ -1,0 +1,15 @@
+#signUpInput{
+    width: 60%;
+    margin-left: 20%;
+    font-weight: 900;
+}
+
+.headerSignUpAuswahl{
+    background-color: lightgrey;
+}
+
+.signUpError,
+.loginError{
+    color: red;
+    margin-top: 1%;
+}
