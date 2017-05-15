@@ -36,3 +36,23 @@
   display: table;
   clear: both;
 }
+
+
+.headerUserName{
+    width: 200px;
+}
+
+.userSetting{
+    cursor: pointer;
+    height: 45px;
+    width: 50px;
+    margin-top: 10px;
+    padding-top: 10px;
+    
+}
+
+.userSetting:hover{
+    background: lightgray;
+    border-radius: 50%;
+}
+

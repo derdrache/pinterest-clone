@@ -1,0 +1,11 @@
+<div id="headerBackground">
+    <div id="header" class="clearfix">
+        <div class="headerLeft headerLogo">be motivated</div>
+        <div class="headerLeft headerAuswahl" ng-click="path('/userHome')">Home</div>
+        <div class="headerLeft headerAuswahl headerMyPinsAuswahl" ng-click="path('/myPins')">Meine Pins</div>
+        
+        <div class="headerRight headerAuswahl" ng-click="logout()">Logout</div>
+        <div class="headerRight userSetting" ng-click="path()"><img src="/Bilder/settings.png"></div>
+        <div class="headerRight headerUserName">Hi {{user}}</div>
+    </div>
+</div>

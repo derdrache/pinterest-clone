@@ -1,4 +1,4 @@
-app.controller('loginController', function($scope, $http, $cookies, $route, $location) {
+app.controller('loginController', function($scope, $http, $cookies, $location,$window) {
  
     
     $scope.submit = function(data, event){
@@ -9,7 +9,9 @@ app.controller('loginController', function($scope, $http, $cookies, $route, $loc
               } else{
                   $cookies.put("user", data.name.toLocaleLowerCase());
                   $location.path("/userHome");
+                  $window.location.reload();
               }
+              
           });
       }  
     };

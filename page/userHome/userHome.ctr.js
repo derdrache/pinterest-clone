@@ -1,13 +1,22 @@
 app.controller('userHomeController', function($scope, $http, $cookies, $route, $location) {
     
-    $scope.logout = function (){
-    var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-          console.log('User signed out.');
-          
-          $cookies.remove("user")
-          $location.path("/")
-          $route.reload();
-    });
+    $scope.pinBox= false;
+    
+    $scope.openPinCreateBox = function(){
+        var action = $scope.pinBox;
+        action == false ? action=true : action=false;
+        
+        $scope.pinBox = action;
+        $scope.verdecken = {"opacity": action == true ? 0.2 : 1};
+    };
+    
+    $scope.createNewPin = function(newPin,event){
+        if (!event||event.key=="Enter"){
+            newPin.user = $cookies.get("user");
+        
+            console.log(newPin)
+        }
     }
+    
+    
 })

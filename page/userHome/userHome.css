@@ -1,0 +1,53 @@
+#userHomePins{
+    
+}
+
+#userHomeAddPin{
+    text-align:center;
+    font-size: 30px;
+    font-weight: 900;
+    width: 50px;
+    color: black;
+    background-color:#F5F5F5;
+    border: solid 2px #F5F5F5;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px 2px grey;
+    position: absolute;
+    bottom: 30;
+    right: 30;
+    cursor: pointer;
+}
+
+#userHomeAddPin:hover{
+    background-color: lightgray;
+    border-color: lightgray;
+}
+
+#userHomeAddPin:active{
+    box-shadow: 0px 0px 0px 0px;
+    transform: translate(2px, 2px);
+}
+
+#userHomeCreatePin{
+    position: absolute;
+    margin-left: 38%;
+    text-align: center;
+    top: 200px;
+    width: 500px;
+    border: solid 2px;
+    
+}
+
+#userHomeCreatePinClose{
+    text-align: right;
+    float: right;
+    padding-right: 5px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+#userHomeCreatePinClose:hover{
+    color: red;
+}
+
+

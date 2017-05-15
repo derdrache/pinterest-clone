@@ -1,3 +1,48 @@
-<h1>Hi {{user}}</h1>
 
-<button ng-click="logout()"> logout</button>
+<div id="headerBackground" ng-style="verdecken">
+    <div id="header" class="clearfix">
+        <div class="headerLeft headerLogo">be motivated</div>
+        <div class="headerLeft headerAuswahl" ng-click="path('/userHome')">Home</div>
+        <div class="headerLeft headerAuswahl" ng-click="path('/myPins')">Meine Pins</div>
+        
+        <div class="headerRight headerAuswahl" ng-click="logout()">Logout</div>
+        <div class="headerRight userSetting" ng-click="path()"><img src="/Bilder/settings.png"></div>
+        <div class="headerRight headerUserName">Hi {{user}}</div>
+    </div>
+</div>
+
+
+    
+<div id="userHomePins" ng-style="verdecken">
+    <h1>Alle Pins wie home + extras</h1>
+
+</div>
+
+    <div id="userHomeAddPin" ng-click="openPinCreateBox()">+</div>
+
+    <div id="userHomeCreatePin" ng-show="pinBox">
+        <div id="userHomeCreatePinClose" ng-click="openPinCreateBox()">X</div>
+        <h1>Erstelle ein Pin</h1>
+        <br>
+        <p>Titel</p>
+        <input ng-model="newPin.title" ng-keypress="createNewPin(newPin, $event)">
+        <p>Bild Link</p>
+        <input ng-model="newPin.img" ng-keypress="createNewPin(newPin, $event)"> 
+        <br>
+        <button ng-click="createNewPin(newPin)">Pin erstellen</button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

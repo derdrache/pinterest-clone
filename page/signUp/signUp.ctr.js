@@ -1,4 +1,4 @@
-app.controller('signUpController', function($scope, $http, $cookies, $route, $location) {
+app.controller('signUpController', function($scope, $http, $cookies, $location,$window) {
     
     $scope.submit = function(daten, event){
         if (!event || event.key == "Enter" ){
@@ -12,6 +12,7 @@ app.controller('signUpController', function($scope, $http, $cookies, $route, $lo
                     } else{
                         $cookies.put("user", daten.name.toLocaleLowerCase());
                         $location.path("/userHome");
+                        $window.location.reload();
                     }
                 });
             }
