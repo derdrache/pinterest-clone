@@ -1,6 +1,8 @@
-app.controller('userHomeController', function($scope, $http, $cookies, $route, $location) {
+app.controller('userHomeController', function($scope, $http, $cookies, $route, $location,$window) {
     
     $scope.pinBox= false;
+    
+    
     
     $scope.openPinCreateBox = function(){
         var action = $scope.pinBox;
@@ -12,11 +14,17 @@ app.controller('userHomeController', function($scope, $http, $cookies, $route, $
     
     $scope.createNewPin = function(newPin,event){
         if (!event||event.key=="Enter"){
-            newPin.user = $cookies.get("user");
-        
-            console.log(newPin)
+            if (newPin.title && newPin.img){
+                newPin.user = $cookies.get("user");
+                
+                $http.post("/userHome", newPin);
+                $window.location.reload();
+            } else{
+                
+            }
         }
-    }
+    };
+    
     
     
 })

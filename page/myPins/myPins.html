@@ -9,3 +9,18 @@
         <div class="headerRight headerUserName">Hi {{user}}</div>
     </div>
 </div>
+
+<div id="myPinsBox" >
+          
+    <div id="container">
+        <div ng-repeat="pin in myPins">
+            <div showAllPins check-last class="grid-item">
+                <div id="myPinsDeleteButton" ng-click="myPinDelete(pin)">X</div>
+                <img src="{{pin.img}}" onError="this.onerror=null;this.src='/Bilder/images.jpg';">
+                <h3>{{pin.title}}</h3>
+            </div>
+        </div>
+    </div>
+    
+</div>
+

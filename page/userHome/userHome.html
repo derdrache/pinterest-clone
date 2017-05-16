@@ -12,13 +12,20 @@
 </div>
 
 
-    
 <div id="userHomePins" ng-style="verdecken">
-    <h1>Alle Pins wie home + extras</h1>
-
+          
+    <div id="container">
+        <div ng-repeat="pin in allPins">
+            <div showAllPins check-last class="grid-item">
+                <img src="{{pin.img}}" onError="this.onerror=null;this.src='/Bilder/images.jpg';">
+                <h3>{{pin.title}}</h3>
+            </div>
+        </div>
+    </div>
+    
 </div>
 
-    <div id="userHomeAddPin" ng-click="openPinCreateBox()">+</div>
+<div id="userHomeAddPin" ng-click="openPinCreateBox()">+</div>
 
     <div id="userHomeCreatePin" ng-show="pinBox">
         <div id="userHomeCreatePinClose" ng-click="openPinCreateBox()">X</div>

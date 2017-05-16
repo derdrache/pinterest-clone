@@ -13,11 +13,18 @@
     <img src="/home/berg.jpg">
 </div>
 
-<div id="homeShowUserContent">
-    <h1>Hier landen von Usern erstellte Pins</h1>
+<div id="userHomePins" ng-style="verdecken">
+          
+    <div id="container">
+        <div ng-repeat="pin in allPins">
+            <div showAllPins check-last class="grid-item">
+                <img src="{{pin.img}}" onError="this.onerror=null;this.src='/Bilder/images.jpg';">
+                <h3>{{pin.title}}</h3>
+            </div>
+        </div>
+    </div>
+    
 </div>
-
-
 
 
     

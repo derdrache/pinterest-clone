@@ -23,4 +23,22 @@ app.config(function($routeProvider,$locationProvider){
         controller: "myPinsController"
     })
 
-});    
+})
+
+.directive("showAllPins", function(){
+    return{
+        restrict: "E"
+    }
+})
+            
+     .directive('checkLast', function () {
+        return function (scope, element, attrs) {
+            //console.log(scope.$position);
+            if (scope.$last=== true) {
+                element.ready(function () {
+                    $('#container').masonry({ columnWidth: 60});
+                    
+                })
+            }
+        }
+    });

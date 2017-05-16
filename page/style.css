@@ -12,3 +12,24 @@ button{
     margin-top: 30px;
     
 }
+
+#container{
+    margin-left: 3%;
+}
+
+.grid-item {
+    margin-left: 3%;
+    margin-top: 10%;
+    float: left;
+    border: solid 2px black;
+}
+
+.grid-item img{
+    width: 260px;
+}
+
+.grid-item h3{
+    margin-top: 2%;
+    text-align: center;
+}
+

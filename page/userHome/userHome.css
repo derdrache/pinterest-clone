@@ -12,7 +12,7 @@
     border: solid 2px #F5F5F5;
     border-radius: 50%;
     box-shadow: 2px 2px 2px 2px grey;
-    position: absolute;
+    position: fixed;
     bottom: 30;
     right: 30;
     cursor: pointer;
@@ -35,7 +35,7 @@
     top: 200px;
     width: 500px;
     border: solid 2px;
-    
+    background-color: white;
 }
 
 #userHomeCreatePinClose{

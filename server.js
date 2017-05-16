@@ -10,6 +10,27 @@ const server = express()
     .use(express.static(__dirname+"/page"))
     .use(bodyParser.json());
     
+/* home - Show all Pins*/    
+server.get("/home", function(req,res){
+   mongoClient.connect(dburl, function(err,db){
+       if (err) throw err;
+       
+        db.collection("beMotivatedPins").find({}).toArray(function(err,result){
+            if (err) throw err;
+            
+            var allPins =[];
+            result.forEach(function(data){
+                if (data.pins){
+                    for (var i = 0; i<data.pins.length;i++){
+                        allPins.push(data.pins[i]);
+                    }                   
+                }
+            })
+            res.send(allPins);
+        })
+    db.close();    
+   })
+});
 
 /* new user - check and insert */    
 server.post("/signUp", function(req,res){
@@ -37,10 +58,31 @@ server.post("/signUp", function(req,res){
                     email: req.body.email.toLowerCase(),
                     password: req.body.password
                 });
+                db.collection("beMotivatedPins").insert({
+                    "user": req.body.name.toLowerCase()
+                });
                 check= true;
             }
         res.send(check);
         db.close();    
+        });
+    });
+});
+
+/* Google User DB Check*/
+server.post("/home", function(req,res){
+    
+    mongoClient.connect(dburl, function(err,db){
+        if (err) throw err;
+        
+        db.collection("beMotivatedPins").find({"user": req.body.user.toLowerCase()}).toArray(function(err,result){
+            if (err) throw err;
+            
+            if (result.length == 0){
+                db.collection("beMotivatedPins").insert({
+                    "user": req.body.user.toLowerCase()
+                });
+            }
         });
     });
 });
@@ -64,8 +106,68 @@ server.post("/login", function(req,res){
         });
     });
 });
-    
 
+/* userHome - New Pen*/    
+
+server.post("/userHome", function(req,res){
+    
+    mongoClient.connect(dburl, function(err,db){
+        if (err) throw err;
+        
+        
+        db.collection("beMotivatedPins").update(
+          {"user": req.body.user.toLowerCase()},
+          {
+              $push: {
+                  "pins": {
+                      "title": req.body.title,
+                      "img": req.body.img
+                  }
+              }
+             
+          }
+        );
+        
+    db.close();    
+    });
+});
+
+server.post("/myPins", function(req,res){
+    
+    mongoClient.connect(dburl, function(err,db){
+        if (err) throw err;
+        
+        /**/
+        if (req.body.user){
+            db.collection("beMotivatedPins").find({"user": req.body.user.toLowerCase()}).toArray(function(err, result){
+                if (err) throw err;
+                
+                res.send(result[0].pins);
+            });
+        }
+        
+        /* Pin löschen */
+        if (req.body.pin){
+            console.log(req.body)
+            
+            db.collection("beMotivatedPins").update(
+              {"user": req.body.pin.user},
+              {
+                  $pull: {
+                     "pins":{
+                         "title": req.body.pin.title,
+                         "img": req.body.pin.img
+                     } 
+                  }
+              }
+                
+            )
+        res.send("done");    
+        }
+        
+    db.close();    
+    });
+});
 
 
 

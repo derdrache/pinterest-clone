@@ -2,13 +2,16 @@ app.controller('MainController', function($scope, $http, $cookies, $route, $loca
    
     
   
-    if ($cookies.get("user")){
-        $location.path("/userHome")
-        
-    }
+
     
     $scope.googleLogin= false;
     $scope.user = $cookies.get("user");
+    
+    
+    $http.get("/home").success(function(res){
+        $scope.allPins = res;
+        
+    });
     
     $scope.path= function(path){
         if (path == "/login" || path == "/signUp"){
@@ -29,9 +32,9 @@ app.controller('MainController', function($scope, $http, $cookies, $route, $loca
             var profile = googleUser.getBasicProfile();
             $cookies.put("user", profile.getName());
             $cookies.put("userEmail", profile.getEmail());
-            $window.location.reload();
+            //$window.location.reload();
         }
-      
+      $http.post("/home", {"user": profile.getName(), "userEmail": profile.getEmail()})
     }
     window.onSignIn = onSignIn;
     
