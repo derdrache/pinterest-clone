@@ -32,9 +32,11 @@ app.controller('MainController', function($scope, $http, $cookies, $route, $loca
             var profile = googleUser.getBasicProfile();
             $cookies.put("user", profile.getName());
             $cookies.put("userEmail", profile.getEmail());
-            //$window.location.reload();
+            $scope.googleLogin= false;
+            $location.path("/userHome")
+            $http.post("/home", {"user": profile.getName(), "userEmail": profile.getEmail()})
         }
-      $http.post("/home", {"user": profile.getName(), "userEmail": profile.getEmail()})
+      
     }
     window.onSignIn = onSignIn;
     

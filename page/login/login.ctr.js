@@ -8,8 +8,9 @@ app.controller('loginController', function($scope, $http, $cookies, $location,$w
                   $scope.errorMessage = res;
               } else{
                   $cookies.put("user", data.name.toLocaleLowerCase());
-                  $location.path("/userHome");
                   $window.location.reload();
+                  $location.path("/userHome");
+                  
               }
               
           });

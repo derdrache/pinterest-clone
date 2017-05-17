@@ -1,7 +1,8 @@
 app.controller('userHomeController', function($scope, $http, $cookies, $route, $location,$window) {
     
     $scope.pinBox= false;
-    
+    $scope.user= $cookies.get("user")
+    $scope.googleLogin= false;
     
     
     $scope.openPinCreateBox = function(){

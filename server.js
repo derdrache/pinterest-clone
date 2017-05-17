@@ -148,10 +148,9 @@ server.post("/myPins", function(req,res){
         
         /* Pin löschen */
         if (req.body.pin){
-            console.log(req.body)
             
             db.collection("beMotivatedPins").update(
-              {"user": req.body.pin.user},
+              {"user": req.body.pin.user.toLowerCase()},
               {
                   $pull: {
                      "pins":{

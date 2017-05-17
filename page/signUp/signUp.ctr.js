@@ -11,8 +11,9 @@ app.controller('signUpController', function($scope, $http, $cookies, $location,$
                         $scope.errorMessage = res;
                     } else{
                         $cookies.put("user", daten.name.toLocaleLowerCase());
-                        $location.path("/userHome");
                         $window.location.reload();
+                        $location.path("/userHome");
+                        
                     }
                 });
             }
